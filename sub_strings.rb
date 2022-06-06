@@ -1,13 +1,14 @@
 def substrings(words, dictionary) 
-  word_array = words.gsub(/[^a-z0-9\s]/i, '').split
-  dictionary_string = dictionary.join
-  word_in_dictionary = {}
-  word_array.each do |word|
-    if dictionary_string.include?(word)
-      word_in_dictionary[word] = dictionary_string.scan(word).length
+  word_string = words.gsub(/[^a-z0-9\s]/i, '')
+  count_words = {}
+
+  dictionary.each do |word|
+    if word_string.include?(word)
+      count_words[word] = word_string.scan(word).length
     end
   end
-  word_in_dictionary
+
+  count_words
 end
 
-p substrings("Test one two three!", ["one", "one", "tone", "two", "batwo", "three"])
+p substrings("Test one one tone Batwo! two three!", ["one", "two", "three"])
